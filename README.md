@@ -1,11 +1,11 @@
 # GROMY
 
 
-<p align="center"><img width="100%" src="Gromy.png" alt="Grmoy"/></p>
+<p align="center"><img width="80%" src="Gromy.png" alt="Grmoy"/></p>
 
 
 ## What?
-So by default chrom(ium) bookmarks are oldest on the top. Well thats sucks. I dont want to install yet another extension. Hence **gromy** was born.
+So by default chrom(ium) bookmarks are oldest on the top. Well that sucks. I dont want to install yet another extension. Hence **gromy** was born.
 
 ## Install
 

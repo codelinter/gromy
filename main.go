@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/MintyOwl/gromy/bmk"
+	"github.com/mintyowl/gromy/bmk"
 
 	"github.com/fatih/color"
 	"github.com/mitchellh/go-homedir"

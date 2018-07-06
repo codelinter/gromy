@@ -1,0 +1,107 @@
+{
+  "checksum": "01968991380f06cbfe7a1d1cc2249ffb",
+  "roots": {
+    "bookmark_bar": {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": null,
+                  "date_added": "13175255809069090",
+                  "date_modified": "",
+                  "id": "4",
+                  "name": "Google",
+                  "url": "https://www.google.com/",
+                  "type": "url"
+                }
+              ],
+              "date_added": "13175255799708908",
+              "date_modified": "13175255854860964",
+              "id": "3",
+              "name": "F1",
+              "url": "",
+              "type": "folder"
+            },
+            {
+              "children": null,
+              "date_added": "13175255854860964",
+              "date_modified": "",
+              "id": "5",
+              "name": "Wolfram|Alpha: Computational Intelligence",
+              "url": "https://www.wolframalpha.com/",
+              "type": "url"
+            },
+            {
+              "children": null,
+              "date_added": "13175255760412991",
+              "date_modified": "",
+              "id": "6",
+              "name": "StartPage Search Engine",
+              "url": "https://www.startpage.com/",
+              "type": "url"
+            }
+          ],
+          "date_added": "13175255727148858",
+          "date_modified": "13175255907805086",
+          "id": "2",
+          "name": "First",
+          "url": "",
+          "type": "folder"
+        },
+        {
+          "children": [
+            {
+              "children": null,
+              "date_added": "13175255907805086",
+              "date_modified": "",
+              "id": "8",
+              "name": "reddit: the front page of the internet",
+              "url": "https://www.reddit.com/",
+              "type": "url"
+            },
+            {
+              "children": null,
+              "date_added": "13175255775534098",
+              "date_modified": "",
+              "id": "9",
+              "name": "DuckDuckGo — Privacy, simplified.",
+              "url": "https://duckduckgo.com/",
+              "type": "url"
+            }
+          ],
+          "date_added": "13175255748996907",
+          "date_modified": "13175255911344523",
+          "id": "7",
+          "name": "Second",
+          "url": "",
+          "type": "folder"
+        }
+      ],
+      "date_added": "13175239449412266",
+      "date_modified": "13175255760412991",
+      "id": "1",
+      "name": "Bookmarks bar",
+      "url": "",
+      "type": "folder"
+    },
+    "other": {
+      "children": [],
+      "date_added": "13175239449412273",
+      "date_modified": "0",
+      "id": "10",
+      "name": "Other bookmarks",
+      "type": "folder"
+    },
+    "synced": {
+      "children": [],
+      "date_added": "13175239449412274",
+      "date_modified": "0",
+      "id": "11",
+      "name": "Mobile bookmarks",
+      "type": "folder"
+    }
+  },
+  "version": 1
+}

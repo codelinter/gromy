@@ -1,0 +1,108 @@
+{
+    "checksum": "01968991380f06cbfe7a1d1cc2249ffb",
+    "roots": {
+        "bookmark_bar": {
+            "children": [
+                {
+                    "children": [
+                        {
+                            "date_added": "13175255760412991",
+                            "id": "6",
+                            "meta_info": {
+                                "last_visited_desktop": "13175255760413305"
+                            },
+                            "name": "StartPage Search Engine",
+                            "type": "url",
+                            "url": "https://www.startpage.com/"
+                        },
+                        {
+                            "children": [
+                                {
+                                    "date_added": "13175255809069090",
+                                    "id": "4",
+                                    "meta_info": {
+                                        "last_visited_desktop": "13175255809069152"
+                                    },
+                                    "name": "Google",
+                                    "type": "url",
+                                    "url": "https://www.google.com/"
+                                }
+                            ],
+                            "date_added": "13175255799708908",
+                            "date_modified": "13175255854860964",
+                            "id": "3",
+                            "name": "F1",
+                            "type": "folder"
+                        },
+                        {
+                            "date_added": "13175255854860964",
+                            "id": "5",
+                            "meta_info": {
+                                "last_visited_desktop": "13175255854861022"
+                            },
+                            "name": "Wolfram|Alpha: Computational Intelligence",
+                            "type": "url",
+                            "url": "https://www.wolframalpha.com/"
+                        }
+                    ],
+                    "date_added": "13175255727148858",
+                    "date_modified": "13175255907805086",
+                    "id": "2",
+                    "name": "First",
+                    "type": "folder"
+                },
+                {
+                    "children": [
+                        {
+                            "date_added": "13175255775534098",
+                            "id": "9",
+                            "meta_info": {
+                                "last_visited_desktop": "13175255775534209"
+                            },
+                            "name": "DuckDuckGo — Privacy, simplified.",
+                            "type": "url",
+                            "url": "https://duckduckgo.com/"
+                        },
+                        {
+                            "date_added": "13175255907805086",
+                            "id": "8",
+                            "meta_info": {
+                                "last_visited_desktop": "13175255907805186"
+                            },
+                            "name": "reddit: the front page of the internet",
+                            "type": "url",
+                            "url": "https://www.reddit.com/"
+                        }
+                    ],
+                    "date_added": "13175255748996907",
+                    "date_modified": "13175255911344523",
+                    "id": "7",
+                    "name": "Second",
+                    "type": "folder"
+                }
+            ],
+            "date_added": "13175239449412266",
+            "date_modified": "13175255760412991",
+            "id": "1",
+            "name": "Bookmarks bar",
+            "type": "folder"
+        },
+        "other": {
+            "children": [],
+            "date_added": "13175239449412273",
+            "date_modified": "0",
+            "id": "10",
+            "name": "Other bookmarks",
+            "type": "folder"
+        },
+        "synced": {
+            "children": [],
+            "date_added": "13175239449412274",
+            "date_modified": "0",
+            "id": "11",
+            "name": "Mobile bookmarks",
+            "type": "folder"
+        }
+    },
+    "version": 1
+}

@@ -1,6 +1,5 @@
 # GROMY
 
-##
 
 <p align="center"><img width="100%" src="Gromy.png" alt="Grmoy"/></p>
 

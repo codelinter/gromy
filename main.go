@@ -22,7 +22,6 @@ const helperMsg = `
    ########                      GROMY                    ########
    ########       sorts chrom(ium) bookmarks by date      ########
    ###############################################################
-   ########        Tested on versions above 65            ########
    ########   Folders will get pushed to the top/bottom   ########
    ########        RESTART CHROM(IUM) TO SEE EFFECT       ########
    ###############################################################

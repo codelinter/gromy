@@ -28,9 +28,9 @@ type App struct {
 
 // Top needs a doc
 type Top struct {
-	Checksum string `json:"checksum"`
-	Roots    roots  `json:"roots"`
-	Version  int    `json:"version"`
+	Checksum string  `json:"checksum"`
+	Roots    roots   `json:"roots"`
+	Version  float64 `json:"version"`
 }
 
 type roots struct {
@@ -153,7 +153,7 @@ func (a *App) Doit(filer Filer, order ...int) {
 		handleError(errors.New("ResloveJSON failed"), 84)
 	}
 	if top.Version != 1 {
-		handleError(fmt.Errorf("Unsupported version %d", top.Version), 213)
+		handleError(fmt.Errorf("Unsupported version %v", top.Version), 213)
 	}
 	var o int
 	if len(order) > 0 {

@@ -152,6 +152,9 @@ func (a *App) Doit(filer Filer, order ...int) {
 	if top == nil {
 		handleError(errors.New("ResloveJSON failed"), 84)
 	}
+	if top.Version != 1 {
+		handleError(fmt.Errorf("Unsupported version %d", top.Version), 213)
+	}
 	var o int
 	if len(order) > 0 {
 		o = order[0]

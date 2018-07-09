@@ -14,10 +14,6 @@ import (
 )
 
 const backupExt = "__backup__"
-const (
-	Latest int = iota
-	Oldest
-)
 
 // App encapsulates this app
 type App struct {

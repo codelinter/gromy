@@ -58,9 +58,7 @@ const helperMsg = `
 
 func handleError(err error, code int) {
 	color.HiRed("%s", err.Error())
-	if code > 0 {
-		os.Exit(code)
-	}
+	os.Exit(code)
 }
 
 func flagUsage() {

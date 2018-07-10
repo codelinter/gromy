@@ -2,6 +2,7 @@ package bmk
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -128,5 +129,10 @@ func Restore(jsonPath string) {
 		handleError(fmt.Errorf("Unexpected behavior"), 222)
 	}
 	color.Magenta("\nRestoring %s to %s\n", finalList[idx].name, jsonPath)
+	b, err := ioutil.ReadFile(finalList[idx].name)
+	if err != nil {
+		handleError(err, 210)
+	}
+	writeDataToFile(jsonPath, b)
 	printSuccess(getType(jsonPath))
 }

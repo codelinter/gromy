@@ -67,12 +67,17 @@ type byOldestFirst struct {
 	bookmarks
 }
 
-// WriteToFile writes 'contents' to file with 'filename
-func (a *ff) WriteToFile(filename string, contents []byte) {
-	e := ioutil.WriteFile(filename, contents, 0744)
+func writeDataToFile(filename string, data []byte) {
+	e := ioutil.WriteFile(filename, data, 0744)
 	if e != nil {
 		handleError(e, 210)
 	}
+
+}
+
+// WriteToFile writes 'data' to file with 'filename
+func (a *ff) WriteToFile(filename string, contents []byte) {
+	writeDataToFile(filename, contents)
 }
 
 // FileContents gets the contents of original bookmark file

@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -24,7 +25,7 @@ type fBackup struct {
 
 type backedUpFile struct {
 	name       string
-	timeFormat string
+	timeFormat int
 }
 
 var finalList = make([]backedUpFile, 0)
@@ -53,7 +54,7 @@ func getTimeList(root string) []backedUpFile {
 		}
 		bF := backedUpFile{
 			name:       path,
-			timeFormat: time.Unix(int64(iVal), 0).Format(tFormat),
+			timeFormat: iVal,
 		}
 		finalList = append(finalList, bF)
 		return nil
@@ -62,6 +63,9 @@ func getTimeList(root string) []backedUpFile {
 		return nil
 	}
 	return finalList
+}
+func timeInFormat(tm int) string {
+	return time.Unix(int64(tm), 0).Format(tFormat)
 }
 
 func formatList(root string) []backedUpFile {
@@ -82,9 +86,14 @@ func getType(jsonPath string) string {
 
 func getFormattedList(jsonPath string, ans *fBackup) ([]string, error) {
 	chrom := getType(jsonPath)
+	var iList []int
 	var list []string
 	for _, bF := range finalList {
-		list = append(list, bF.timeFormat)
+		iList = append(iList, bF.timeFormat)
+	}
+	sort.Sort((sort.Reverse(sort.IntSlice(iList))))
+	for _, l := range iList {
+		list = append(list, timeInFormat(l))
 	}
 	msg := fmt.Sprintf("Choose backup for %s", chrom)
 	var qs = []*s.Question{

@@ -18,8 +18,6 @@ const backupExt = "__backup__"
 // App encapsulates this app
 type App struct {
 	filename string
-	top      Top
-	wtf      func(string, []byte)
 }
 
 // Top needs a doc
@@ -60,8 +58,6 @@ type bm struct {
 }
 
 type bookmarks []bm
-
-var results = make(bookmarks, 0)
 
 type byLatestFirst struct {
 	bookmarks
@@ -119,9 +115,9 @@ func DealChildren(ch *[]bm, order int) {
 	for _, c := range *ch {
 		if len(c.Children) > 0 {
 			if order == 0 {
-				sort.Sort(byLatestFirst{c.Children})
+				sort.Sort(byLatestFirst{bookmarks: c.Children})
 			} else {
-				sort.Sort(byOldestFirst{c.Children})
+				sort.Sort(byOldestFirst{bookmarks: c.Children})
 			}
 			DealChildren(&c.Children, order)
 		}

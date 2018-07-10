@@ -8,7 +8,7 @@ import (
 
 type testApp struct {
 	counter                                    int
-	originalFileName, fileName                 string
+	fileName                                   string
 	backupContent, newContent, originalContent []byte
 	haveLocation, wantedLocation               string
 }

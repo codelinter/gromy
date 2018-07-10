@@ -29,7 +29,7 @@ type backedUpFile struct {
 var finalList = make([]backedUpFile, 0)
 
 func getTimeList(root string) []backedUpFile {
-	filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 		if info.IsDir() {
 			return nil
 		}
@@ -46,9 +46,9 @@ func getTimeList(root string) []backedUpFile {
 		if len(a) != 2 {
 			return nil
 		}
-		iVal, err := strconv.Atoi(a[1])
-		if err != nil {
-			handleError(err, 1)
+		iVal, e := strconv.Atoi(a[1])
+		if e != nil {
+			handleError(e, 1)
 		}
 		bF := backedUpFile{
 			name:       path,
@@ -57,6 +57,9 @@ func getTimeList(root string) []backedUpFile {
 		finalList = append(finalList, bF)
 		return nil
 	})
+	if err != nil {
+		return nil
+	}
 	return finalList
 }
 

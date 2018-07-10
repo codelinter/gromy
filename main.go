@@ -141,7 +141,6 @@ func main() {
 			}
 			exiting := "Exiting..."
 			handleError(errors.New(exiting), 0)
-			return
 		}
 	} else {
 		app := bmk.NewApp(chromJSON)

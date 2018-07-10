@@ -21,6 +21,12 @@
 
 [[projects]]
   branch = "master"
+  name = "github.com/mgutz/ansi"
+  packages = ["."]
+  revision = "9520e82c474b0a04dd04f8a40959027271bab992"
+
+[[projects]]
+  branch = "master"
   name = "github.com/mitchellh/go-homedir"
   packages = ["."]
   revision = "3864e76763d94a6df2f9960b16a20a33da9f9a66"
@@ -31,9 +37,19 @@
   packages = ["unix"]
   revision = "ce36f3865eeb42541ce3f87f32f8462c5687befa"
 
+[[projects]]
+  name = "gopkg.in/AlecAivazis/survey.v1"
+  packages = [
+    ".",
+    "core",
+    "terminal"
+  ]
+  revision = "17861e192dc11fd2f5081df1932c94cce262fa1e"
+  version = "v1.6.1"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "41b890fa9ab1341d1438154a306ed43cb84c55a9c6759c14479b6d39f9dad760"
+  inputs-digest = "edf1342ed01fece1a05eb47ac43d36ba689d170478b114b0f7dd5d6bc0422c86"
   solver-name = "gps-cdcl"
   solver-version = 1

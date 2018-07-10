@@ -64,6 +64,7 @@ func flagUsage() {
 
 func main() {
 	isGC := flag.Bool("gc", false, "Chromium or Google-Chrome")
+	isRestore := flag.Bool("restore", false, "Restore from backup")
 	noPrompt := flag.Bool("y", false, "Execute without prompt")
 	help := flag.Bool("h", false, "Helper")
 	bookmarkFileLocation := flag.String("loc", "", "Location to the bookmark json file")
@@ -115,6 +116,11 @@ func main() {
 		ordr = fmt.Sprint("Latest")
 	} else {
 		ordr = fmt.Sprint("Oldest")
+	}
+
+	if *isRestore {
+		bmk.Restore(chromJSON)
+		return
 	}
 
 	if !*noPrompt {

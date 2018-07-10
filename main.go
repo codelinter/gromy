@@ -37,6 +37,8 @@ const helperMsg = `
    -------------------------------------
    -y [no value required. When used, will bypass the prompt completely]
    --------------------------------------------------------------------
+   -restore [no value required. Restore old backups by date]
+   --------------------------------------------------------------------
 
    EXAMPLE1: gromy 
 	 #1 Targets, default, Chromium bookmarks at default location and sorts by, default, latest first
@@ -47,8 +49,11 @@ const helperMsg = `
    EXAMPLE3: gromy -gc -order=oldest 
 	 #3 targets Google-Chrome to sort by oldest first
 
-   EXAMPLE4: gromy -order=oldest -loc='D:\Path\To\Different\Location\Bookmarks'
+   EXAMPLE4: gromy.exe -order=oldest -loc='D:\Path\To\Different\Location\Bookmarks'
 	 #4 Sort by oldest first at custom location
+   
+   EXAMPLE5: gromy --restore -gc
+	 #5 Restore Google Chrome bookmarks from previous/old backups. Prompts you to choose from options
 `
 
 func handleError(err error, code int) {

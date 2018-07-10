@@ -21,6 +21,7 @@ Flag | Action
 -gc | switches to "Google Chrome" instead of the default "Chromium"
 -order | Sort by oldest/latest
 -y | bypass the prompt completely
+-restore | Restore old backups by date
 
 ## Help
 `gromy -h`

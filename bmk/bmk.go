@@ -166,9 +166,12 @@ func (a *App) Doit(filer Filer, order ...int) {
 	filer.WriteToFile(backup, fc)
 
 	filer.WriteToFile(a.filename, res)
-	color.Green("\n\t%s\n", "<SUCCESS>")
-	fmt.Println("\tRESTART CHROM(IUM) TO SEE EFFECT")
+	printSuccess(getType(a.filename))
 	fmt.Printf("\tPrevious bookmark is backed up in the file '%s'\n", backup)
+}
+func printSuccess(typ string) {
+	color.Green("\n%s\n", "<SUCCESS>")
+	fmt.Printf("Restart %s to see effect\n", typ)
 }
 
 // ResolveJSON populates 'top' from the json

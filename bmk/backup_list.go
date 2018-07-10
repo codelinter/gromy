@@ -8,13 +8,27 @@ import (
 	"strings"
 	"time"
 
+	"github.com/fatih/color"
+
 	s "gopkg.in/AlecAivazis/survey.v1"
 )
 
 var tFormat = "Jan 02 2006 3:04:05 PM"
 
-func getTimeList(root string) []string {
-	var finalList = make([]string, 0)
+type fBackup struct {
+	Editr  string
+	Backup string //`survey:"backup"`
+	Tester string
+}
+
+type backedUpFile struct {
+	name       string
+	timeFormat string
+}
+
+var finalList = make([]backedUpFile, 0)
+
+func getTimeList(root string) []backedUpFile {
 	filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 		if info.IsDir() {
 			return nil
@@ -36,52 +50,80 @@ func getTimeList(root string) []string {
 		if err != nil {
 			handleError(err, 1)
 		}
-		finalList = append(finalList, time.Unix(int64(iVal), 0).Format(tFormat))
+		bF := backedUpFile{
+			name:       path,
+			timeFormat: time.Unix(int64(iVal), 0).Format(tFormat),
+		}
+		finalList = append(finalList, bF)
 		return nil
 	})
 	return finalList
 }
 
-func formatList(root string) []string {
+func formatList(root string) []backedUpFile {
 	return getTimeList(root)
 }
 
-// Restore tries to restore bookmark from the backup
-func Restore(jsonPath string) {
-	fList := formatList(filepath.Dir(jsonPath))
+func getType(jsonPath string) string {
 	var typ int
 	if !strings.Contains(strings.ToLower(jsonPath), "chromium") {
 		typ = 1
 	}
-	setupPrompt(fList, typ)
-}
-
-type fBackup struct {
-	Editr  string
-	Backup string //`survey:"backup"`
-	Tester string
-}
-
-func setupPrompt(list []string, typ int) {
 	var chrom = "Chromium"
 	if typ == 1 {
 		chrom = "Google Chrome"
 	}
-	msg := fmt.Sprintf("Choose backup for %s", chrom)
-	var qs = []*s.Question{{
-		Name: "backup",
-		Prompt: &s.Select{
-			Message: msg,
-			Options: list,
-			Default: list[0],
-		},
-	},
+	return chrom
+}
+
+func getFormattedList(jsonPath string, ans *fBackup) ([]string, error) {
+	chrom := getType(jsonPath)
+	var list []string
+	for _, bF := range finalList {
+		list = append(list, bF.timeFormat)
 	}
-	ans := &fBackup{}
+	msg := fmt.Sprintf("Choose backup for %s", chrom)
+	var qs = []*s.Question{
+		{
+			Name: "backup",
+			Prompt: &s.Select{
+				Message: msg,
+				Options: list,
+				Default: list[0],
+			},
+		},
+	}
+
 	err := s.Ask(qs, ans)
 	if err != nil {
-		fmt.Println(err.Error())
+		return nil, err
+	}
+	return list, nil
+}
+
+func getIndex(list []string, ans *fBackup) int {
+	var idx = -1
+	for i, l := range list {
+		if l == ans.Backup {
+			idx = i
+		}
+	}
+	return idx
+}
+
+// Restore tries to restore bookmark from the backup
+func Restore(jsonPath string) {
+	formatList(filepath.Dir(jsonPath))
+	ans := &fBackup{}
+	list, err := getFormattedList(jsonPath, ans)
+	if err != nil {
+		// TODO
 		return
 	}
-	fmt.Printf("FINAL %v\n", ans.Backup)
+	idx := getIndex(list, ans)
+	if idx == -1 {
+		handleError(fmt.Errorf("Unexpected behavior"), 222)
+	}
+	color.Magenta("\nRestoring %s to %s\n", finalList[idx].name, jsonPath)
+	printSuccess(getType(jsonPath))
 }

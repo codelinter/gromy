@@ -95,10 +95,9 @@ type Filer interface {
 
 func handleError(err error, code int) {
 	fmt.Fprintln(os.Stderr, err)
-	if code > 0 {
-		os.Exit(code)
-	}
+	os.Exit(code)
 }
+
 func (by byLatestFirst) Less(i, j int) bool {
 	if by.bookmarks[j].Type == "folder" {
 		return false

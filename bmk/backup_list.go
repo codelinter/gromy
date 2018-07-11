@@ -84,7 +84,7 @@ func getType(jsonPath string) string {
 	return chrom
 }
 
-func getFormattedList(jsonPath string, ans *fBackup) ([]string, error) {
+func getFormattedList(jsonPath string, ans *fBackup, finalList []backedUpFile) ([]string, error) {
 	chrom := getType(jsonPath)
 	var iList []int
 	var list []string
@@ -94,6 +94,9 @@ func getFormattedList(jsonPath string, ans *fBackup) ([]string, error) {
 	sort.Sort((sort.Reverse(sort.IntSlice(iList))))
 	for _, l := range iList {
 		list = append(list, timeInFormat(l))
+	}
+	if len(list) == 0 {
+		return nil, fmt.Errorf("empty list")
 	}
 	msg := fmt.Sprintf("Choose backup for %s", chrom)
 	var qs = []*s.Question{
@@ -126,9 +129,9 @@ func getIndex(list []string, ans *fBackup) int {
 
 // Restore tries to restore bookmark from the backup
 func Restore(jsonPath string) {
-	formatList(filepath.Dir(jsonPath))
+	fList := formatList(filepath.Dir(jsonPath))
 	ans := &fBackup{}
-	list, err := getFormattedList(jsonPath, ans)
+	list, err := getFormattedList(jsonPath, ans, fList)
 	if err != nil {
 		// TODO
 		return

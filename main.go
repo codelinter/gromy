@@ -55,9 +55,11 @@ const helperMsg = `
    EXAMPLE5: gromy --restore -gc
 	 #5 Restore Google Chrome bookmarks from previous/old backups. Prompts you to choose from options
 `
+const failure = `[✘]`
 
 func handleError(err error, code int) {
-	color.HiRed("%s", err.Error())
+	e := fmt.Sprintf("%s %s", failure, err.Error())
+	color.HiRed("\n\t%s", e)
 	os.Exit(code)
 }
 

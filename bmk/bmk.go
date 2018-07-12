@@ -13,7 +13,12 @@ import (
 	"github.com/fatih/color"
 )
 
-const backupExt = "__backup__"
+const (
+	backupExt = "__backup__"
+	success   = `[✓]`
+	point     = `[•]`
+	failure   = `[✘]`
+)
 
 // App encapsulates this app
 type App struct {
@@ -94,7 +99,8 @@ type Filer interface {
 }
 
 func handleError(err error, code int) {
-	fmt.Fprintln(os.Stderr, err)
+	e := fmt.Sprintf("%s %s", failure, err.Error())
+	color.HiRed("\n\t%s", e)
 	os.Exit(code)
 }
 
@@ -167,11 +173,11 @@ func (a *App) Doit(filer Filer, order ...int) {
 
 	filer.WriteToFile(a.filename, res)
 	printSuccess(getType(a.filename))
-	fmt.Printf("Previous bookmark is backed up in the file '%s'\n", backup)
+	fmt.Printf("\t%s Previous bookmark is backed up in the file '%s'\n", success, backup)
 }
 func printSuccess(typ string) {
-	color.Green("\n%s\n", "<SUCCESS>")
-	fmt.Printf("Restart %s to see effect\n", typ)
+	color.Green("\n\t%s%s\n", success, " SUCCESS")
+	fmt.Printf("\t%s Restart %s to see effect\n", point, typ)
 }
 
 // ResolveJSON populates 'top' from the json

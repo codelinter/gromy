@@ -167,7 +167,7 @@ func (a *App) Doit(filer Filer, order ...int) {
 
 	filer.WriteToFile(a.filename, res)
 	printSuccess(getType(a.filename))
-	fmt.Printf("\tPrevious bookmark is backed up in the file '%s'\n", backup)
+	fmt.Printf("Previous bookmark is backed up in the file '%s'\n", backup)
 }
 func printSuccess(typ string) {
 	color.Green("\n%s\n", "<SUCCESS>")
